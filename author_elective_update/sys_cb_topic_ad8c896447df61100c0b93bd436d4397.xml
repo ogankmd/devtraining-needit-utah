@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_cb_topic">
+    <sys_cb_topic action="DELETE">
+        <applicability/>
+        <applicability_mode>query</applicability_mode>
+        <autopilot_topic>false</autopilot_topic>
+        <category>c62b85a447df61100c0b93bd436d431b</category>
+        <channels/>
+        <connect_queue/>
+        <description>Topic allows users to update the NeedIt records</description>
+        <expose_on_palette>false</expose_on_palette>
+        <flexible_conversation_switching>false</flexible_conversation_switching>
+        <graph>{
+  "graph_api_version": "1.0.42",
+  "goals": {
+    "primary": {
+      "id": "primary",
+      "trigger": {
+        "type": "primary"
+      },
+      "name": "primary",
+      "applicability": "",
+      "description": "",
+      "nodes": {
+        "f97193e5c6f74cb69cafcdda1d07f766": {
+          "id": "f97193e5c6f74cb69cafcdda1d07f766",
+          "stepType": "Start",
+          "name": "Start",
+          "greetingResponse": {
+            "value": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "I can help you find and update NeedIt records for a type of request."
+                  }
+                ]
+              }
+            ],
+            "mode": "simple"
+          }
+        },
+        "bafa81a9eaf1405baf6f277e082a9ccc": {
+          "id": "bafa81a9eaf1405baf6f277e082a9ccc",
+          "stepType": "TerminateGoal",
+          "name": "End",
+          "confirmationMessage": {
+            "value": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Ask again when you need to update other NeedIt records."
+                  }
+                ]
+              }
+            ],
+            "mode": "simple"
+          }
+        },
+        "07c85e8f988a40e496d8c96947576324": {
+          "stepType": "ChoicePrompt",
+          "name": "NeedIt Type",
+          "prompt": {
+            "value": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Which type of NeedIt record would you like to view?"
+                  }
+                ]
+              }
+            ],
+            "mode": "simple"
+          },
+          "confirmMessage": {
+            "value": "",
+            "mode": "simple"
+          },
+          "acknowledgeMsg": {
+            "value": "",
+            "mode": "simple"
+          },
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          },
+          "skippable": {
+            "value": "",
+            "mode": "query"
+          },
+          "defaultValue": {
+            "value": "",
+            "mode": "simple"
+          },
+          "variableId": "de5acf7c20b4455285bfab3baae58c74",
+          "id": "07c85e8f988a40e496d8c96947576324",
+          "hasCardHeader": false,
+          "cardMetadata": {
+            "mode": "card",
+            "metadataScript": "",
+            "cardTemplate": "",
+            "cardFields": {},
+            "cardDefinition": {}
+          },
+          "withNluUserInput": false,
+          "skipIfFulfilled": false
+        },
+        "8dbe08bed2d649d1920e5e8d5d3d0950": {
+          "id": "8dbe08bed2d649d1920e5e8d5d3d0950",
+          "stepType": "TextOutput",
+          "name": "Confirm NeedIt Type",
+          "secure": false,
+          "value": [
+            {
+              "value": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "text": ""
+                    },
+                    {
+                      "type": "datapill",
+                      "dataPill": {
+                        "value": "{{vaInputs.needit_type}}",
+                        "displayValue": "Input Variables➛NeedIt Type"
+                      },
+                      "children": [
+                        {
+                          "text": ""
+                        }
+                      ]
+                    },
+                    {
+                      "text": "You selected: "
+                    }
+                  ]
+                }
+              ],
+              "mode": "simple",
+              "_key": "b890aee4578b4d5ca594f3ea92f41184"
+            }
+          ],
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          }
+        }
+      },
+      "edges": [
+        {
+          "id": "a03084438564430dae21304e33888f23",
+          "edgeType": "Edge",
+          "source": "f97193e5c6f74cb69cafcdda1d07f766",
+          "target": "07c85e8f988a40e496d8c96947576324",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "ee3ed036c1db4dda85cdab4d154d674f",
+          "edgeType": "Edge",
+          "source": "07c85e8f988a40e496d8c96947576324",
+          "target": "8dbe08bed2d649d1920e5e8d5d3d0950",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "15b55b77f1724a7599c7e0ecd4dc18c9",
+          "edgeType": "Edge",
+          "source": "8dbe08bed2d649d1920e5e8d5d3d0950",
+          "target": "bafa81a9eaf1405baf6f277e082a9ccc",
+          "sourcePort": "",
+          "targetPort": ""
+        }
+      ]
+    }
+  },
+  "variables": {
+    "746b120ccc3d4c5f8b9d0bcb4edfc468": {
+      "id": "746b120ccc3d4c5f8b9d0bcb4edfc468",
+      "name": "LiveAgent_application",
+      "value": {
+        "mode": "simple",
+        "value": null
+      },
+      "varType": "script",
+      "category": "vaVars"
+    },
+    "current-user": {
+      "category": "vaInputs",
+      "id": "current-user",
+      "label": "User",
+      "name": "user",
+      "table": "sys_user",
+      "varType": "reference"
+    },
+    "de5acf7c20b4455285bfab3baae58c74": {
+      "id": "de5acf7c20b4455285bfab3baae58c74",
+      "name": "needit_type",
+      "label": "NeedIt Type",
+      "varType": "choice",
+      "choices": [
+        {
+          "label": "Legal",
+          "value": "legal"
+        },
+        {
+          "label": "Facilities",
+          "value": "facilities"
+        },
+        {
+          "label": "Human Resources",
+          "value": "human resources",
+          "checked": true,
+          "meta": {}
+        }
+      ],
+      "category": "vaInputs",
+      "nodeId": "07c85e8f988a40e496d8c96947576324",
+      "isHidden": false
+    }
+  }
+}</graph>
+        <key_phrases>Update NeedIt Records,NeedIt Request</key_phrases>
+        <library>false</library>
+        <live_agent>false</live_agent>
+        <name>Update NeedIt Records</name>
+        <nlu_intent/>
+        <nlu_intent_label/>
+        <nlu_model/>
+        <nlu_model_label/>
+        <nlu_provider/>
+        <palette_label/>
+        <roles/>
+        <root_topic_id/>
+        <secure_custom_input_control>false</secure_custom_input_control>
+        <source_topic_id/>
+        <sys_class_name>sys_cb_topic</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-06-04 20:20:44</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>ad8c896447df61100c0b93bd436d4397</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>Update NeedIt Records</sys_name>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sys_cb_topic_ad8c896447df61100c0b93bd436d4397</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-06-04 20:41:24</sys_updated_on>
+        <triggerable_by_notification>false</triggerable_by_notification>
+        <type>STANDARD</type>
+    </sys_cb_topic>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</application>
+        <file_path/>
+        <instance_id>ba4ab1e1dba6449442b321c405961913</instance_id>
+        <instance_name>dev97567</instance_name>
+        <name>sys_cb_topic_ad8c896447df61100c0b93bd436d4397</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_cb_topic"><sys_cb_topic action="INSERT_OR_UPDATE"><applicability/><applicability_mode>query</applicability_mode><autopilot_topic>false</autopilot_topic><category>c62b85a447df61100c0b93bd436d431b</category><channels/><connect_queue/><description>Topic allows users to update the NeedIt records</description><expose_on_palette>false</expose_on_palette><flexible_conversation_switching>false</flexible_conversation_switching><graph>{
+  "graph_api_version": "1.0.42",
+  "goals": {
+    "primary": {
+      "id": "primary",
+      "trigger": {
+        "type": "primary"
+      },
+      "name": "primary",
+      "applicability": "",
+      "description": "",
+      "nodes": {
+        "f97193e5c6f74cb69cafcdda1d07f766": {
+          "id": "f97193e5c6f74cb69cafcdda1d07f766",
+          "stepType": "Start",
+          "name": "Start",
+          "greetingResponse": {
+            "value": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "I can help you find and update NeedIt records for a type of request."
+                  }
+                ]
+              }
+            ],
+            "mode": "simple"
+          }
+        },
+        "bafa81a9eaf1405baf6f277e082a9ccc": {
+          "id": "bafa81a9eaf1405baf6f277e082a9ccc",
+          "stepType": "TerminateGoal",
+          "name": "End",
+          "confirmationMessage": {
+            "value": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Ask again when you need to update other NeedIt records."
+                  }
+                ]
+              }
+            ],
+            "mode": "simple"
+          }
+        },
+        "07c85e8f988a40e496d8c96947576324": {
+          "stepType": "ChoicePrompt",
+          "name": "NeedIt Type",
+          "prompt": {
+            "value": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Which type of NeedIt record would you like to view?"
+                  }
+                ]
+              }
+            ],
+            "mode": "simple"
+          },
+          "confirmMessage": {
+            "value": "",
+            "mode": "simple"
+          },
+          "acknowledgeMsg": {
+            "value": "",
+            "mode": "simple"
+          },
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          },
+          "skippable": {
+            "value": "",
+            "mode": "query"
+          },
+          "defaultValue": {
+            "value": "",
+            "mode": "simple"
+          },
+          "variableId": "de5acf7c20b4455285bfab3baae58c74",
+          "id": "07c85e8f988a40e496d8c96947576324",
+          "hasCardHeader": false,
+          "cardMetadata": {
+            "mode": "card",
+            "metadataScript": "",
+            "cardTemplate": "",
+            "cardFields": {},
+            "cardDefinition": {}
+          },
+          "withNluUserInput": false,
+          "skipIfFulfilled": false
+        },
+        "8dbe08bed2d649d1920e5e8d5d3d0950": {
+          "id": "8dbe08bed2d649d1920e5e8d5d3d0950",
+          "stepType": "TextOutput",
+          "name": "Confirm NeedIt Type",
+          "secure": false,
+          "value": [
+            {
+              "value": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "text": ""
+                    },
+                    {
+                      "type": "datapill",
+                      "dataPill": {
+                        "value": "{{vaInputs.needit_type}}",
+                        "displayValue": "Input Variables➛NeedIt Type"
+                      },
+                      "children": [
+                        {
+                          "text": ""
+                        }
+                      ]
+                    },
+                    {
+                      "text": "You selected: "
+                    }
+                  ]
+                }
+              ],
+              "mode": "simple",
+              "_key": "b890aee4578b4d5ca594f3ea92f41184"
+            }
+          ],
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          }
+        }
+      },
+      "edges": [
+        {
+          "id": "a03084438564430dae21304e33888f23",
+          "edgeType": "Edge",
+          "source": "f97193e5c6f74cb69cafcdda1d07f766",
+          "target": "07c85e8f988a40e496d8c96947576324",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "ee3ed036c1db4dda85cdab4d154d674f",
+          "edgeType": "Edge",
+          "source": "07c85e8f988a40e496d8c96947576324",
+          "target": "8dbe08bed2d649d1920e5e8d5d3d0950",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "15b55b77f1724a7599c7e0ecd4dc18c9",
+          "edgeType": "Edge",
+          "source": "8dbe08bed2d649d1920e5e8d5d3d0950",
+          "target": "bafa81a9eaf1405baf6f277e082a9ccc",
+          "sourcePort": "",
+          "targetPort": ""
+        }
+      ]
+    }
+  },
+  "variables": {
+    "746b120ccc3d4c5f8b9d0bcb4edfc468": {
+      "id": "746b120ccc3d4c5f8b9d0bcb4edfc468",
+      "name": "LiveAgent_application",
+      "value": {
+        "mode": "simple",
+        "value": null
+      },
+      "varType": "script",
+      "category": "vaVars"
+    },
+    "current-user": {
+      "category": "vaInputs",
+      "id": "current-user",
+      "label": "User",
+      "name": "user",
+      "table": "sys_user",
+      "varType": "reference"
+    },
+    "de5acf7c20b4455285bfab3baae58c74": {
+      "id": "de5acf7c20b4455285bfab3baae58c74",
+      "name": "needit_type",
+      "label": "NeedIt Type",
+      "varType": "choice",
+      "choices": [
+        {
+          "label": "Legal",
+          "value": "legal"
+        },
+        {
+          "label": "Facilities",
+          "value": "facilities"
+        },
+        {
+          "label": "Human Resources",
+          "value": "human resources",
+          "checked": true,
+          "meta": {}
+        }
+      ],
+      "category": "vaInputs",
+      "nodeId": "07c85e8f988a40e496d8c96947576324",
+      "isHidden": false
+    }
+  }
+}</graph><key_phrases>Update NeedIt Records,NeedIt Request</key_phrases><library>false</library><live_agent>false</live_agent><name>Update NeedIt Records</name><nlu_intent/><nlu_intent_label/><nlu_model/><nlu_model_label/><nlu_provider/><palette_label/><roles/><root_topic_id/><secure_custom_input_control>false</secure_custom_input_control><source_topic_id/><sys_class_name>sys_cb_topic</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2023-06-04 20:20:44</sys_created_on><sys_domain>global</sys_domain><sys_id>ad8c896447df61100c0b93bd436d4397</sys_id><sys_mod_count>3</sys_mod_count><sys_name>Update NeedIt Records</sys_name><sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package><sys_policy/><sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope><sys_update_name>sys_cb_topic_ad8c896447df61100c0b93bd436d4397</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-06-04 20:41:24</sys_updated_on><triggerable_by_notification>false</triggerable_by_notification><type>STANDARD</type></sys_cb_topic></record_update>]]></payload>
+        <payload_hash>377205307</payload_hash>
+        <record_name>Update NeedIt Records</record_name>
+        <reverted_from/>
+        <source>a30a54a5470321100c0b93bd436d43d2</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-06-04 20:41:24</sys_created_on>
+        <sys_id>d8419da847df61100c0b93bd436d43a3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1888824aa1e0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-06-04 20:41:24</sys_updated_on>
+        <type>Topic</type>
+        <update_guid>50419da8ebdf6110f9dcc19d83a057a3</update_guid>
+        <update_guid_history>50419da8ebdf6110f9dcc19d83a057a3:377205307,5d4051e861df6110653eaf25cf48c503:-1964055168,f45e4128fadf6110181870f37250dcbf:1779187538,ed8c89643edf611045d04ecc72876f98:2064490202</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-06-05 07:34:27</sys_created_on>
+        <sys_db_object display_value="" name="sys_cb_topic">sys_cb_topic</sys_db_object>
+        <sys_id>11995b80b2114be49e9805abcecd29c9</sys_id>
+        <sys_metadata>ad8c896447df61100c0b93bd436d4397</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Update NeedIt Records</sys_name>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_scope_delete display_value="">94872a8897db403e8ee69a431de2fca4</sys_scope_delete>
+        <sys_update_name>sys_cb_topic_ad8c896447df61100c0b93bd436d4397</sys_update_name>
+        <sys_update_version display_value="sys_cb_topic_ad8c896447df61100c0b93bd436d4397">d8419da847df61100c0b93bd436d43a3</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-06-05 07:34:27</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
